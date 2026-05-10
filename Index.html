@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Graduation Bytes | Career & Academic Portal</title>
+    <style>
+        /* ==========================================
+           1. PREMIUM CSS RESET & VARIABLES
+           ========================================== */
+        :root {
+            /* Premium Corporate Color Palette */
+            --primary-slate: #0f172a;      /* Deepest Slate */
+            --secondary-slate: #334155;    /* Standard Text */
+            --light-slate: #64748b;        /* Muted Text */
+            --brand-blue: #2563eb;         /* Vibrant Action Blue */
+            --brand-blue-hover: #1d4ed8;
+            --brand-light: #eff6ff;        /* Soft Blue Backgrounds */
+            --surface-bg: #f8fafc;         /* Page Background */
+            --card-bg: #ffffff;            /* Card Background */
+            --border-light: #e2e8f0;       /* Soft Borders */
+            
+            /* Modern Spacing & Radii */
+            --radius-xl: 20px;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            
+            /* Layered, High-End Shadows */
+            --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -1px rgba(15, 23, 42, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
+            --shadow-hover: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+            
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--surface-bg); color: var(--secondary-slate); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        img { max-width: 100%; display: block; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
+        h1, h2, h3 { color: var(--primary-slate); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+        h2 { font-size: 2.25rem; margin-bottom: 12px; text-align: center; }
+        .subtitle { text-align: center; color: var(--light-slate); margin-bottom: 48px; font-size: 1.1rem; max-width: 650px; margin-left: auto; margin-right: auto; }
+
+        /* ==========================================
+           2. HEADER & NAVIGATION
+           ========================================== */
+        header { background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(226, 232, 240, 0.8); position: sticky; top: 0; z-index: 1000; padding: 14px 0; }
+        .nav-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo-box { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .nav-logo { height: 40px; width: auto; object-fit: contain; }
+        .logo-text { font-size: 1.35rem; font-weight: 800; color: var(--primary-slate); letter-spacing: -0.5px; }
+
+        .nav-links { list-style: none; display: flex; gap: 32px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--secondary-slate); font-weight: 600; font-size: 0.95rem; transition: var(--transition); }
+        .nav-links a:hover { color: var(--brand-blue); }
+        .nav-btn { background: var(--brand-light); color: var(--brand-blue) !important; padding: 8px 16px; border-radius: 999px; }
+        .nav-btn:hover { background: #dbeafe; }
+        
+        .hamburger { display: none; background: none; border: none; cursor: pointer; color: var(--primary-slate); padding: 4px; }
+
+        /* ==========================================
+           3. HERO SECTION
+           ========================================== */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 60px 24px; max-width: 1100px; margin: 0 auto; min-height: 85vh; }
+        .hero-text h1 { font-size: 3.5rem; margin-bottom: 24px; letter-spacing: -1.5px; }
+        .hero-text p { font-size: 1.15rem; color: var(--light-slate); margin-bottom: 32px; }
+        
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background-color: var(--brand-blue); color: #fff; padding: 16px 32px; text-decoration: none; font-weight: 600; font-size: 1rem; border-radius: 999px; transition: var(--transition); box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.23); background-color: var(--brand-blue-hover); }
+        
+        .hero-img { border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 1px solid var(--border-light); width: 100%; object-fit: cover; aspect-ratio: 4/3; }
+
+        /* ==========================================
+           4. SUBJECT DIRECTORY (Glassy Tiles)
+           ========================================== */
+        #directory { background-color: var(--surface-bg); border-top: 1px solid var(--border-light); }
+        
+        .search-box { position: relative; max-width: 450px; margin: 0 auto 40px auto; }
+        .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--light-slate); }
+        #subjectSearch { width: 100%; padding: 16px 20px 16px 48px; border-radius: 999px; border: 1px solid var(--border-light); background: var(--card-bg); outline: none; font-size: 1rem; color: var(--primary-slate); transition: var(--transition); box-shadow: var(--shadow-sm); }
+        #subjectSearch:focus { border-color: var(--brand-blue); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+        #subjectSearch::placeholder { color: #94a3b8; }
+
+        .grid-layout { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        
+        .tile-card { background: var(--card-bg); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 24px; text-decoration: none; display: flex; align-items: flex-start; gap: 16px; transition: var(--transition); box-shadow: var(--shadow-sm); position: relative; overflow: hidden; }
+        .tile-card:hover { border-color: #cbd5e1; transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .tile-icon { background: var(--brand-light); color: var(--brand-blue); flex-shrink: 0; width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; }
+        .tile-info h3 { font-size: 1.15rem; color: var(--primary-slate); margin-bottom: 4px; }
+        .tile-info p { font-size: 0.9rem; color: var(--light-slate); margin: 0; }
+        .tile-arrow { margin-left: auto; align-self: center; color: #cbd5e1; transition: var(--transition); }
+        .tile-card:hover .tile-arrow { color: var(--brand-blue); transform: translateX(4px); }
+
+        /* ==========================================
+           5. CAREER SWIPE CAROUSEL (App-style)
+           ========================================== */
+        #careers { background-color: var(--card-bg); border-top: 1px solid var(--border-light); padding-bottom: 100px; }
+        
+        .swipe-container { 
+            display: flex; 
+            gap: 24px; 
+            overflow-x: auto; 
+            scroll-snap-type: x mandatory; 
+            -webkit-overflow-scrolling: touch; 
+            padding: 10px 24px 20px 24px; 
+            margin: 0 -24px; 
+            scrollbar-width: none; 
+        }
+        .swipe-container::-webkit-scrollbar { display: none; }
+
+        .swipe-card { 
+            flex: 0 0 360px; 
+            scroll-snap-align: center; 
+            background: var(--card-bg); 
+            border-radius: var(--radius-xl); 
+            overflow: hidden; 
+            box-shadow: var(--shadow-md); 
+            border: 1px solid var(--border-light); 
+            display: flex;
+            flex-direction: column;
+        }
+        .swipe-card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-light); }
+        .swipe-info { padding: 32px 24px; flex-grow: 1; }
+        .swipe-tag { display: inline-block; background: var(--brand-light); color: var(--brand-blue); font-size: 0.75rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .swipe-card h3 { font-size: 1.4rem; margin-bottom: 12px; color: var(--primary-slate); }
+        .swipe-card p { font-size: 0.95rem; color: var(--light-slate); line-height: 1.6; }
+
+        /* PROFESSIONAL CAROUSEL DOTS (Pagination) */
+        .carousel-indicators { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 24px; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background-color: #cbd5e1; transition: var(--transition); cursor: pointer; }
+        /* The active dot becomes a modern pill shape */
+        .dot.active { width: 24px; border-radius: 999px; background-color: var(--brand-blue); }
+
+        /* ==========================================
+           6. FOOTER
+           ========================================== */
+        footer { background: var(--primary-slate); color: #fff; text-align: center; padding: 60px 24px; }
+        .footer-logo { font-size: 1.5rem; font-weight: 800; margin-bottom: 16px; display: block; color: #fff; }
+        footer p { color: #94a3b8; font-size: 0.95rem; margin-top: 8px; }
+        footer a { color: #fff; text-decoration: none; font-weight: 500; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ==========================================
+           7. MOBILE RESPONSIVENESS
+           ========================================== */
+        @media screen and (max-width: 992px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding: 40px 24px; gap: 40px; min-height: auto; }
+            .hero-text h1 { font-size: 3rem; }
+            .hero-img { order: -1; }
+        }
+
+        @media screen and (max-width: 768px) {
+            h2 { font-size: 1.8rem; }
+            .subtitle { font-size: 1rem; margin-bottom: 32px; }
+            
+            /* Mobile Navigation */
+            .hamburger { display: block; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); flex-direction: column; gap: 0; border-bottom: 1px solid var(--border-light); box-shadow: var(--shadow-lg); padding: 8px 0; }
+            .nav-links.active { display: flex; }
+            .nav-links li { padding: 4px 24px; }
+            .nav-links a { display: block; padding: 12px 0; border-bottom: 1px solid var(--surface-bg); }
+            .nav-btn { display: inline-block; text-align: center; margin-top: 8px; }
+            
+            .hero-text h1 { font-size: 2.5rem; }
+            .btn { width: 100%; }
+
+            /* Grid Fixes */
+            .grid-layout { gap: 16px; }
+            .tile-card { padding: 16px; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+            .tile-arrow { display: none; /* Hide arrow on mobile to save space */ }
+            .tile-icon { width: 40px; height: 40px; }
+            .tile-info h3 { font-size: 1.05rem; }
+
+            /* Carousel adjustments for phones */
+            .swipe-card { flex: 0 0 85vw; /* Shows a peek of the next card to encourage swiping */ }
+            .swipe-info { padding: 24px 20px; }
+        }
+
+        @media screen and (max-width: 480px) {
+            .grid-layout { grid-template-columns: 1fr; } /* Stack subjects on tiny phones */
+            .tile-card { flex-direction: row; align-items: center; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HEADER -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-box">
+                <!-- ========================================== -->
+                <!-- ADD YOUR LOGO HERE: Ensure logo.png is in an 'assets' folder -->
+                <!-- ========================================== -->
+                <img src="assets/logo.png" alt="Logo" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span class="logo-text" style="display: none;">Graduation Bytes</span>
+            </a>
+            
+            <button class="hamburger" id="menu-btn" aria-label="Toggle Menu">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#directory">Study Materials</a></li>
+                <li><a href="#careers">Career Pathways</a></li>
+                <li><a href="https://t.me/Graduation_Bytes" class="nav-btn" target="_blank">Telegram Support</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. HERO SECTION -->
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Master B.Com.<br>Build Your Career.</h1>
+                <p>The premium academic dashboard for commerce students. Access structured university notes, PYQs, and elite post-graduation professional pathways instantly.</p>
+                <a href="#directory" class="btn">
+                    Access Dashboard
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+            <!-- Professional EdTech Image -->
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" alt="Student Studying" class="hero-img">
+        </section>
+
+        <!-- 3. SUBJECT DIRECTORY -->
+        <section id="directory">
+            <div class="container">
+                <h2>Subject Directory</h2>
+                <p class="subtitle">Search and select a subject to instantly access beautifully organized PDF notes and Previous Year Questions.</p>
+                
+                <div class="search-box">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" id="subjectSearch" placeholder="Search subjects (e.g., Taxation, Audit)...">
+                </div>
+                
+                <div id="subject-grid" class="grid-layout">
+                    <!-- JS will inject tiles here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CAREER PATHWAYS (Swipe Carousel with Dots) -->
+        <section id="careers">
+            <div class="container">
+                <h2>Post-Graduation Pathways</h2>
+                <p class="subtitle">Swipe through our curated guides on elite career routes to pursue after completing your B.Com degree.</p>
+                
+                <!-- Swipe Container -->
+                <div class="swipe-container" id="carousel">
+                    
+                    <div class="swipe-card">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Accounting">
+                        <div class="swipe-info">
+                            <span class="swipe-tag">Direct Entry Route</span>
+                            <h3>Chartered Accountancy (CA)</h3>
+                            <p>B.Com graduates with 55%+ marks bypass the Foundation exam. Register directly for CA Intermediate, complete your 4-week ICITSS training, and begin your mandatory Articleship immediately.</p>
+                        </div>
+                    </div>
+
+                    <div class="swipe-card">
+                        <img src="https://images.pexels.com/photos/5668770/pexels-photo-5668770.jpeg" alt="Boardroom">
+                        <div class="swipe-info">
+                            <span class="swipe-tag">Corporate Law</span>
+                            <h3>Company Secretary (CS)</h3>
+                            <p>Specialise in corporate governance and board management. As a commerce graduate, you can enter the CS Executive program directly, completely bypassing the CSEET entrance test.</p>
+                        </div>
+                    </div>
+
+                    <div class="swipe-card">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Finance Data">
+                        <div class="swipe-info">
+                            <span class="swipe-tag">Tech & Finance</span>
+                            <h3>Corporate Readiness</h3>
+                            <p>The modern accounting standard. Focus heavily on mastering Tally Prime integration and advanced Microsoft Excel functions (Pivot Tables, VLOOKUP) to secure high-paying corporate roles.</p>
+                        </div>
+                    </div>
+
+                    <div class="swipe-card">
+                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="Banking">
+                        <div class="swipe-info">
+                            <span class="swipe-tag">Government Sector</span>
+                            <h3>Banking & Finance (PO)</h3>
+                            <p>Prepare for IBPS PO, SBI Clerk, and SSC CGL. Your B.Com background provides a massive, unfair advantage in the Quantitative Aptitude and Financial Awareness sections.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Professional Carousel Pagination Dots -->
+                <div class="carousel-indicators" id="carousel-dots">
+                    <!-- Dots injected by JS based on number of cards -->
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- 5. FOOTER -->
+    <footer>
+        <span class="footer-logo">Graduation Bytes</span>
+        <p>&copy; 2026 Graduation Bytes. Fostering Academic Excellence.</p>
+        <p>Built for the modern commerce student.</p>
+    </footer>
+
+    <!-- 6. INTERACTIVE LOGIC -->
+    <script>
+        // --- A. Mobile Menu Logic ---
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
+                : '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+            });
+        });
+
+
+        // --- B. Subject Data Array (Update your Telegram Links here) ---
+        const subjectsData = [
+            { name: "Financial Accounting", link: "https://t.me/Graduation_Bytes" },
+            { name: "Business Law", link: "https://t.me/Graduation_Bytes" },
+            { name: "Corporate Accounting", link: "https://t.me/Graduation_Bytes" },
+            { name: "Income Tax Law", link: "https://t.me/Graduation_Bytes" },
+            { name: "Cost Accounting", link: "https://t.me/Graduation_Bytes" },
+            { name: "Business Economics", link: "https://t.me/Graduation_Bytes" },
+            { name: "Management Accounting", link: "https://t.me/Graduation_Bytes" },
+            { name: "Auditing", link: "https://t.me/Graduation_Bytes" }
+        ];
+
+        // --- C. Inject Subject Tiles ---
+        const gridContainer = document.getElementById('subject-grid');
+        const searchInput = document.getElementById('subjectSearch');
+
+        function renderSubjects(data) {
+            gridContainer.innerHTML = '';
+            if (data.length === 0) {
+                gridContainer.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--light-slate); padding: 40px 0;">No subjects found matching your search.</p>`;
+                return;
+            }
+            
+            let htmlContent = '';
+            data.forEach(sub => {
+                htmlContent += `
+                    <a href="${sub.link}" target="_blank" rel="noopener" class="tile-card">
+                        <div class="tile-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </div>
+                        <div class="tile-info">
+                            <h3>${sub.name}</h3>
+                            <p>View Syllabus & Notes</p>
+                        </div>
+                        <svg class="tile-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                `;
+            });
+            gridContainer.innerHTML = htmlContent;
+        }
+
+        renderSubjects(subjectsData);
+
+        // --- D. Live Search Filter ---
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            const filtered = subjectsData.filter(sub => sub.name.toLowerCase().includes(query));
+            renderSubjects(filtered);
+        });
+
+        // --- E. Dynamic Carousel Dots Logic ---
+        const carousel = document.getElementById('carousel');
+        const cards = document.querySelectorAll('.swipe-card');
+        const dotsContainer = document.getElementById('carousel-dots');
+
+        // Create dots based on number of cards
+        cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active'); // First dot is active initially
+            
+            // Allow clicking dot to scroll to card
+            dot.addEventListener('click', () => {
+                const scrollLeft = cards[index].offsetLeft - carousel.offsetLeft;
+                carousel.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+            });
+            
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        // Update active dot when user swipes using IntersectionObserver
+        const observerOptions = {
+            root: carousel,
+            threshold: 0.5 // Card must be 50% visible to trigger
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const activeIndex = Array.from(cards).indexOf(entry.target);
+                    // Remove active class from all
+                    dots.forEach(d => d.classList.remove('active'));
+                    // Add active class to current
+                    if(dots[activeIndex]) dots[activeIndex].classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => observer.observe(card));
+
+    </script>
+</body>
+</html>
