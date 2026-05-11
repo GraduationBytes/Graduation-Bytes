@@ -116,7 +116,7 @@ function applyFilters() {
 
     // If inputs are empty, revert to the "Latest 10" feed
     if (searchQuery === '' && sessionQuery === 'all') {
-        renderTable(vaultData.slice(0, 5));
+        renderTable(vaultData.slice(0, 10));
         return;
     }
 
@@ -143,3 +143,27 @@ document.getElementById('session-filter').addEventListener('change', applyFilter
 
 // Boot up the app when the HTML finishes loading
 document.addEventListener('DOMContentLoaded', initializeApp);
+/* ==========================================================================
+   5. MOBILE UX: SEARCH FOCUS UPLIFT
+   ========================================================================== */
+const searchInput = document.getElementById('search-input');
+
+searchInput.addEventListener('focus', () => {
+    // Only trigger this behavior on mobile screens
+    if (window.innerWidth < 768) {
+        // Wait 300ms for the mobile keyboard to finish sliding up
+        setTimeout(() => {
+            const vaultSection = document.getElementById('vault');
+            const headerHeight = document.querySelector('.site-header').offsetHeight;
+            
+            // Calculate exact position of the search area
+            const vaultPosition = vaultSection.getBoundingClientRect().top + window.scrollY;
+            
+            // Scroll smoothly so the search bar sits just below the sticky header
+            window.scrollTo({
+                top: vaultPosition - headerHeight - 10, // 10px of breathing room
+                behavior: 'smooth'
+            });
+        }, 300);
+    }
+});
