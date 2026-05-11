@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graduation Bytes | B.Com & CA Resource Center</title>
+    
+    <!-- Link to our UI Design System -->
+    <link rel="stylesheet" href="main.css">
+    
+    <!-- FontAwesome for the professional Telegram Icon (No extra image needed) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- 1. GLOBAL HEADER -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="brand">
+                <img src="logo.png" alt="Graduation Bytes Logo" class="brand-logo" onerror="this.style.display='none'">
+                <h1>Graduation Bytes</h1>
+            </div>
+            <nav class="main-nav">
+                <a href="#about">About Me</a>
+                <a href="#vault">Resource Vault</a>
+                <a href="https://t.me/Graduation_Bytes" target="_blank" class="btn-telegram">
+                    <i class="fab fa-telegram"></i> Join Telegram
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. QUOTE OF THE DAY CONTAINER -->
+    <section class="quote-section">
+        <div class="glass-container" id="quote-container">
+            <!-- JavaScript will automatically inject the daily quote here -->
+            <p id="daily-quote" class="quote-text">Loading daily inspiration...</p>
+        </div>
+    </section>
+
+    <main>
+        <!-- 3. ABOUT SECTION -->
+        <section id="about" class="about-section">
+            <div class="text-content">
+                <h2>Hi, I'm Pankaj Kumar.</h2>
+<p>Welcome to <strong>Graduation Bytes</strong>. I simplify complex B.Com and CA concepts so you can focus on passing your exams. This portal is your official study vault—giving you instant, structured access to all my session-wise YouTube lectures and Telegram notes.</p>
+            </div>
+        </section>
+
+        <!-- 4. RESOURCE VAULT (The Shell) -->
+        <section id="vault" class="vault-section">
+            <div class="vault-header">
+                <h2>Study Notes</h2>
+                
+                <!-- Dynamic Filters for the JS Brain -->
+                <div class="controls">
+                    <div class="search-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Search subject, chapter, or topic...">
+                    </div>
+                    <select id="session-filter">
+                        <option value="all">All Sessions</option>
+                        <option value="2026-27">2026-27</option>
+                        <option value="2025-26">2025-26</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- The Table Container where JS injects data.json -->
+            <div class="table-container">
+                <table class="resource-table">
+                    <thead>
+                        <tr>
+                            <th>Session</th>
+                            <th>Subject</th>
+                            <th>Topic & Format</th>
+                            <th>Resource Link</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table-body">
+                        <!-- JS WILL INJECT LINKS HERE AUTOMATICALLY -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- "Coming Soon" Fallback Message (Hidden by default) -->
+            <div id="empty-state" class="empty-state hidden">
+                <i class="fas fa-book-open"></i>
+                <h3>Lectures & Notes Coming Soon!</h3>
+                <p>I haven't uploaded resources for this exact topic yet. Make sure you are subscribed to Graduation Bytes on YouTube for the latest updates.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 5. GLOBAL FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; <span id="current-year"></span> Graduation Bytes. Building CA Foundations.</p>
+            <a href="https://www.youtube.com/@Graduation_Bytes" target="_blank" class="footer-link youtube-link">
+                <i class="fab fa-youtube"></i> Subscribe on YouTube
+            </a>
+        </div>
+    </footer>
+
+    <!-- Link to our JS Brain (Loads after HTML is ready) -->
+    <script src="main.js" defer></script>
+</body>
+</html>
