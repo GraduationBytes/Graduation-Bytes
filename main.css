@@ -1,7 +1,7 @@
 /* ==========================================================================
    1. FONT IMPORT & THEME ENGINE
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
     --primary-color: #0f172a; 
@@ -18,10 +18,10 @@
 }
 
 /* ==========================================================================
-   2. CSS RESET & BASE RULES
+   2. CSS RESET & BASE RULES (Footer Fix Applied)
    ========================================================================== */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; height: 100%; }
 body {
     font-family: var(--font-main);
     background-color: var(--bg-color);
@@ -35,7 +35,7 @@ body {
     min-height: 100vh; 
 }
 main {
-    flex: 1 0 auto;
+    flex: 1; /* Forces main to fill available space, pushing footer down */
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
@@ -101,80 +101,96 @@ main {
 .btn-telegram:active { transform: translateY(0); }
 
 /* ==========================================================================
-   4. QUOTE OF THE DAY
+   4. PROFESSIONAL HERO & QUOTE SECTION
    ========================================================================== */
-.quote-section {
-    padding: 2.5rem 1rem 0 1rem;
-    max-width: 800px;
-    margin: 0 auto;
-    width: 100%;
-}
-.glass-container {
-    background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.7));
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,1);
-    padding: 2rem;
+.about-hero-section {
+    background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
-    text-align: center;
-    box-shadow: var(--shadow-md);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
 }
+.about-hero-container {
+    display: flex;
+    flex-direction: column-reverse; /* Avatar on top for mobile */
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+}
+.about-text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.about-text-content h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+.about-subtitle {
+    font-weight: 700;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.about-description {
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.about-avatar {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-color);
+}
+.about-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.inline-quote {
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background: rgba(37, 99, 235, 0.05);
+    border-left: 3px solid var(--accent-color);
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    text-align: left;
+}
+.quote-icon {
+    color: var(--accent-color);
+    font-size: 1rem;
+    opacity: 0.6;
+    margin-top: 0.2rem;
+}
 .quote-text {
-    font-size: 1.15rem;
     font-style: italic;
     font-weight: 500;
     color: #334155;
+    font-size: 0.95rem;
+    line-height: 1.5;
     transition: opacity 0.5s ease;
 }
 
 /* ==========================================================================
-   5. MAIN CONTENT LAYOUT (Compact Mobile First)
-   ========================================================================== */
-.about-section {
-    position: relative; 
-    text-align: center;
-    margin-bottom: 2rem;
-    background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
-    padding: 1.25rem 1rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm); 
-    border: 1px solid var(--border-color);
-    border-top: 4px solid var(--accent-color);
-    overflow: hidden; 
-}
-.about-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
-    pointer-events: none; 
-}
-.about-section h2 {
-    position: relative;
-    margin-bottom: 0.5rem;
-    font-size: 1.35rem;
-    font-weight: 800; 
-    letter-spacing: -0.5px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-.about-section p {
-    position: relative;
-    color: #475569;
-    font-size: 0.9rem;
-    max-width: 100%; 
-    margin: 0 auto;
-    line-height: 1.5;
-}
-
-/* ==========================================================================
-   6. VAULT & FILTERS
+   5. VAULT & FILTERS
    ========================================================================== */
 .vault-header { margin-bottom: 2rem; }
 .vault-header h2 { font-size: 1.75rem; letter-spacing: -0.5px; }
@@ -221,7 +237,7 @@ main {
 }
 
 /* ==========================================================================
-   7. LMS SUBJECT GRID (Cards Layout)
+   6. LMS SUBJECT GRID (Cards Layout)
    ========================================================================== */
 .grid-container {
     display: grid;
@@ -275,7 +291,7 @@ main {
 }
 
 /* ==========================================================================
-   8. CHAPTER VIEW & ACCORDIONS
+   7. CHAPTER VIEW & ACCORDIONS (With Highlighted Back Button)
    ========================================================================== */
 .chapter-view-header {
     display: flex;
@@ -307,6 +323,21 @@ main {
 }
 
 .btn-back:hover { color: var(--primary-color); }
+
+/* NEW: Prominent Highlight for Back Button */
+.btn-highlight {
+    background-color: var(--primary-color);
+    color: var(--surface-color) !important;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-fast);
+}
+.btn-highlight:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
 
 .btn-expand {
     align-self: flex-start;
@@ -392,7 +423,6 @@ main {
     color: #334155;
 }
 
-/* Shared Button Logic (retained from original for Telegram links) */
 .resource-link-btn {
     display: inline-flex;
     justify-content: center;
@@ -417,7 +447,7 @@ main {
 }
 
 /* ==========================================================================
-   9. FALLBACK & FOOTER
+   8. FALLBACK & FOOTER
    ========================================================================== */
 .empty-state {
     text-align: center;
@@ -431,21 +461,20 @@ main {
 .empty-state p { color: #64748b; }
 .hidden { display: none !important; }
 
-/* ULTRA-COMPACT: Professional Mobile-First Footer Layout */
 .site-footer {
     flex-shrink: 0; 
     text-align: center;
-    padding: 0.75rem 0.5rem; /* Razor-thin vertical padding */
+    padding: 0.75rem 0.5rem;
     background-color: #0f172a;
     color: rgba(255, 255, 255, 0.6); 
-    margin-top: 1.5rem; /* Tighter spacing above footer */
-    font-size: 0.75rem; /* Micro-text for copyright */
+    margin-top: 1.5rem;
+    font-size: 0.75rem; 
 }
 .footer-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.2rem; /* Eliminates almost all space between text and link */
+    gap: 0.2rem;
 }
 .footer-link {
     color: rgba(255, 255, 255, 0.8);
@@ -455,15 +484,16 @@ main {
     gap: 0.4rem;
     margin-top: 0; 
     font-weight: 500;
-    font-size: 0.8rem; /* Shrunk the YouTube button text */
+    font-size: 0.8rem;
     transition: all var(--transition-fast);
 }
 .youtube-link:hover {
     color: #ff0000; 
     transform: translateY(-1px); 
 }
+
 /* ==========================================================================
-   10. KEYFRAMES & DESKTOP MEDIA QUERIES
+   9. KEYFRAMES & DESKTOP MEDIA QUERIES
    ========================================================================== */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -479,7 +509,20 @@ main {
         margin: 0 auto;
     }
     .brand h1 { font-size: 1.5rem; }
-    .quote-text { font-size: 1.35rem; }
+    
+    /* Hero Section Desktop Alignment */
+    .about-hero-container {
+        flex-direction: row;
+        text-align: left;
+        padding: 1rem;
+    }
+    .about-text-content {
+        align-items: flex-start;
+    }
+    .about-avatar {
+        width: 160px;
+        height: 160px;
+    }
     
     .vault-header {
         display: flex;
@@ -487,7 +530,6 @@ main {
         align-items: flex-end;
     }
 
-    /* UPDATED: Search and Filter Controls Layout */
     .controls {
         flex-direction: row;
         align-items: center;
@@ -495,16 +537,13 @@ main {
         width: 100%; 
         max-width: 600px;
     }
-    #search-input { 
-        flex: 1; 
-    }
+    #search-input { flex: 1; }
     #session-filter { 
         flex: none; 
         min-width: 180px; 
         width: auto; 
     }
 
-    /* Chapter View Desktop Alignments */
     .chapter-view-header {
         flex-direction: row;
         justify-content: space-between;
@@ -514,57 +553,72 @@ main {
     .btn-back { order: 0; align-self: center; }
     .btn-expand { order: 2; align-self: center; }
 
-    /* Parts list inside accordion flex to row on desktop */
     .part-item {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-    .resource-link-btn {
-        width: auto;
-    }
+    .resource-link-btn { width: auto; }
 
-    /* NEW: Forces footer items into a single row on PC */
     .footer-container {
         flex-direction: row;
         justify-content: center;
         gap: 1.5rem;
     }
 }
-/* MOBILE OVERRIDE: COMPACT LIST VIEW */
+
+/* ==========================================================================
+   10. MOBILE OVERRIDE: COMPACT VIEW (Bio & Subject Card Scaling)
+   ========================================================================== */
 @media (max-width: 767px) {
-    .grid-container {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem; /* Tighter spacing */
+    
+    /* --- Bio Section Scaling --- */
+    .about-hero-section {
+        padding: 1.2rem 1rem;
+        gap: 1rem;
     }
-
-    .subject-card {
-        min-height: auto; /* Remove the 160px height */
-        padding: 0.8rem 1rem;
-        flex-direction: row; /* Horizontal layout */
-        align-items: center;
-        justify-content: space-between;
+    .about-avatar {
+        width: 90px;
+        height: 90px;
     }
-
-    /* Hide the category badge since you don't want to emphasize categories */
-    .subject-card .category-badge {
-        display: none; 
+    .about-text-content h2 {
+        font-size: 1.4rem;
     }
-
-    .subject-card div {
-        display: flex;
-        flex-direction: column;
+    .about-subtitle {
+        font-size: 0.8rem;
     }
-
-    .subject-card h3 {
-        font-size: 1rem;
-        margin-bottom: 0.2rem;
+    .about-description {
+        font-size: 0.9rem;
     }
-
-    .subject-card p {
+    .inline-quote {
+        padding: 0.8rem; 
         margin-top: 0;
-        font-size: 0.75rem;
-        text-align: right;
+    }
+    .quote-text {
+        font-size: 0.85rem;
+    }
+
+    /* --- Subject Cards Shrink (Compact but Readable) --- */
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+        gap: 0.75rem; 
+    }
+    .subject-card {
+        min-height: auto; /* Lets the readable text dictate the height */
+        padding: 1rem; 
+        border-radius: 8px; 
+    }
+    .category-badge {
+        font-size: 0.7rem; /* Boosted to a readable badge size */
+        padding: 0.2rem 0.4rem; 
+        margin-bottom: 0.5rem;
+    }
+    .subject-card h3 {
+        font-size: 0.95rem; /* Boosted to a readable heading size */
+        margin-bottom: 0.2rem;
+        line-height: 1.2;
+    }
+    .subject-card p {
+        font-size: 0.8rem; /* Boosted to minimum readable body text */
     }
 }
