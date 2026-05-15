@@ -57,23 +57,30 @@
         </div>
     </header>
 
-    <!-- 2. QUOTE OF THE DAY -->
-    <section class="quote-section">
-        <div class="glass-container" id="quote-container">
-            <p id="daily-quote" class="quote-text">Loading daily inspiration...</p>
-        </div>
-    </section>
-
     <main>
-        <!-- 3. ABOUT SECTION -->
-        <section id="about" class="about-section">
-            <div class="text-content">
-                <h2>Hi, I'm Pankaj Kumar.</h2>
-                <p>Welcome to <strong>Graduation Bytes</strong>. Get instant, structured access to all session-wise lectures and notes.</p>
+        <!-- 2. PROFESSIONAL ABOUT & QUOTE (Integrated Layout) -->
+        <section id="about" class="about-hero-section">
+            <div class="about-hero-container">
+                <div class="about-text-content">
+                    <h2>Pankaj Kumar</h2>
+                    <p class="about-subtitle">Educator | Content Creator</p>
+                    <p class="about-description">Welcome to <strong>Graduation Bytes</strong>. Get access to session-wise lectures and notes.</p>
+                    
+                    <!-- JS Dependent IDs preserved -->
+                    <div class="inline-quote" id="quote-container">
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <span id="daily-quote" class="quote-text">Loading daily inspiration...</span>
+                    </div>
+                </div>
+                
+                <div class="about-avatar">
+                    <img src="profile.png" alt="Pankaj Kumar" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <i class="fas fa-user-circle fallback-icon" style="display: none; font-size: 120px; color: #cbd5e1;"></i>
+                </div>
             </div>
         </section>
 
-        <!-- 4. RESOURCE VAULT (LMS Architecture) -->
+        <!-- 3. RESOURCE VAULT (LMS Architecture) -->
         <section id="vault" class="vault-section">
             <div class="vault-header">
                 <h2>Study Notes</h2>
@@ -91,15 +98,16 @@
                 </div>
             </div>
 
-            <!-- VIEW A: The LMS Subject Grid (Visible by default) -->
+            <!-- VIEW A: The LMS Subject Grid -->
             <div id="lms-grid-container" class="grid-container">
                 <!-- JS WILL INJECT SUBJECT CARDS HERE -->
             </div>
 
-            <!-- VIEW B: The Chapter Accordions (Hidden until subject clicked) -->
+            <!-- VIEW B: The Chapter Accordions -->
             <div id="chapter-view-container" class="chapter-view hidden">
                 <div class="chapter-view-header">
-                    <button id="back-to-grid-btn" class="btn-back">
+                    <!-- BACK BUTTON HIGHLIGHTED -->
+                    <button id="back-to-grid-btn" class="btn-back btn-highlight">
                         <i class="fas fa-arrow-left"></i> Back to Subjects
                     </button>
                     <h3 id="active-subject-title">Subject Title Loading...</h3>
@@ -120,7 +128,7 @@
         </section>
     </main>
 
-    <!-- 5. GLOBAL FOOTER -->
+    <!-- 4. GLOBAL FOOTER -->
     <footer class="site-footer">
         <div class="footer-container">
             <p>&copy; <span id="current-year"></span> Graduation Bytes. Building CA Foundations.</p>
