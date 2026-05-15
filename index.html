@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- 1. Technical Meta (Critical for Browsers) -->
+    <!-- 1. Technical Meta -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <title>Graduation Bytes | B.Com & CA Resource Center</title>
 
-    <!-- 2. SEO Meta Tags (For Google Ranking) -->
+    <!-- 2. SEO Meta Tags -->
     <meta name="description" content="Official resource vault by Pankaj Kumar. Access structured B.Com and CA study notes, YouTube lectures, and Telegram resources for commerce students.">
     <meta name="keywords" content="Graduation Bytes, Pankaj Kumar, B.Com Notes, CA Intermediate, Chartered Accountancy, Accounting, Tally Prime, GST Resources">
     <meta name="author" content="Pankaj Kumar">
 
-    <!-- 3. Google Search Console Verification (Paste your code below) -->
+    <!-- 3. Google Search Console Verification -->
     <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE_HERE" />
 
-    <!-- 4. Favicon & Search Result Icon (Square 512x512) -->
+    <!-- 4. Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
 
-    <!-- 5. Social Media Preview (Open Graph) -->
+    <!-- 5. Social Media Preview -->
     <meta property="og:title" content="Graduation Bytes | Pankaj Kumar's Study Vault">
     <meta property="og:description" content="Simplifying complex commerce concepts. Structured notes for B.Com & CA students.">
     <meta property="og:image" content="logo.png">
     <meta property="og:url" content="https://yourusername.github.io/your-repo-name/">
     <meta property="og:type" content="website">
 
-    <!-- 6. Performance: Typography (Inter Font) -->
+    <!-- 6. Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- 7. Icon Library (FontAwesome) -->
+    <!-- 7. Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- 8. Main UI Stylesheet -->
+    <!-- 8. Stylesheet -->
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -57,10 +57,9 @@
         </div>
     </header>
 
-    <!-- 2. QUOTE OF THE DAY CONTAINER -->
+    <!-- 2. QUOTE OF THE DAY -->
     <section class="quote-section">
         <div class="glass-container" id="quote-container">
-            <!-- JavaScript will automatically inject the daily quote here -->
             <p id="daily-quote" class="quote-text">Loading daily inspiration...</p>
         </div>
     </section>
@@ -70,16 +69,16 @@
         <section id="about" class="about-section">
             <div class="text-content">
                 <h2>Hi, I'm Pankaj Kumar.</h2>
-<p>Welcome to <strong>Graduation Bytes</strong>. This portal is your official study vault—giving you instant, structured access to all my session-wise YouTube lectures and Telegram notes.</p>
+                <p>Welcome to <strong>Graduation Bytes</strong>. Get instant, structured access to all session-wise lectures and notes.</p>
             </div>
         </section>
 
-        <!-- 4. RESOURCE VAULT (The Shell) -->
+        <!-- 4. RESOURCE VAULT (LMS Architecture) -->
         <section id="vault" class="vault-section">
             <div class="vault-header">
                 <h2>Study Notes</h2>
                 
-                <!-- Dynamic Filters for the JS Brain -->
+                <!-- Global Filters -->
                 <div class="controls">
                     <div class="search-wrapper">
                         <i class="fas fa-search"></i>
@@ -92,24 +91,27 @@
                 </div>
             </div>
 
-            <!-- The Table Container where JS injects data.json -->
-            <div class="table-container">
-                <table class="resource-table">
-                    <thead>
-                        <tr>
-                            <th>Session</th>
-                            <th>Subject</th>
-                            <th>Topic & Format</th>
-                            <th>Resource Link</th>
-                        </tr>
-                    </thead>
-                    <tbody id="data-table-body">
-                        <!-- JS WILL INJECT LINKS HERE AUTOMATICALLY -->
-                    </tbody>
-                </table>
+            <!-- VIEW A: The LMS Subject Grid (Visible by default) -->
+            <div id="lms-grid-container" class="grid-container">
+                <!-- JS WILL INJECT SUBJECT CARDS HERE -->
             </div>
 
-            <!-- "Coming Soon" Fallback Message (Hidden by default) -->
+            <!-- VIEW B: The Chapter Accordions (Hidden until subject clicked) -->
+            <div id="chapter-view-container" class="chapter-view hidden">
+                <div class="chapter-view-header">
+                    <button id="back-to-grid-btn" class="btn-back">
+                        <i class="fas fa-arrow-left"></i> Back to Subjects
+                    </button>
+                    <h3 id="active-subject-title">Subject Title Loading...</h3>
+                    <button id="expand-all-btn" class="btn-expand">Expand All</button>
+                </div>
+                
+                <div id="accordion-container" class="accordion-list">
+                    <!-- JS WILL INJECT CHAPTER ACCORDIONS HERE -->
+                </div>
+            </div>
+
+            <!-- Fallback Message -->
             <div id="empty-state" class="empty-state hidden">
                 <i class="fas fa-book-open"></i>
                 <h3>Lectures & Notes Coming Soon!</h3>
@@ -128,7 +130,7 @@
         </div>
     </footer>
 
-    <!-- Link to our JS Brain (Loads after HTML is ready) -->
+    <!-- JS Brain -->
     <script src="main.js" defer></script>
 </body>
 </html>
